@@ -36,6 +36,12 @@
                 alert("Both passwords should be the same");
                 return false;
             }
+            
+            if (password.length < 8 && password2.length < 8){
+                alert("The password length should be at least 9 characters");
+                return false;
+            }
+
 
             return true;
         }
@@ -45,6 +51,11 @@
 
 #{form @processRegister(), id:'form', name:'reg-form'}
 <h2 class="text-left">&{'Public.register.title'}</h2>
+
+#{if flash.error}
+<div id="register_error" class="error">${flash.error}</div>
+#{/if}
+
 
 #{ifErrors}
 <div id="register_error" class="error">${errors[0]}</div>
